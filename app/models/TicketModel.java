@@ -41,12 +41,11 @@ public class TicketModel extends Model {
   }
 
   public static void update(Long id) {
-    find.ref(id).update();
+    TicketModel ticket = TicketModel.show(id);
+    ticket.save();
   }
 
   public static TicketModel show(Long id) {
     return 	find.byId(id);
   }
-
-
 }

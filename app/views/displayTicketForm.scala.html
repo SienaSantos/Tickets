@@ -6,19 +6,72 @@
 
     <h1>Ticket Content</h1>
 
-    <ul>
-            <li>
-              @tickets.id
-              @tickets.title
-              @tickets.desc
-              @tickets.severity
-              @tickets.owner
-              @tickets.responsible
-              @tickets.status
-              @tickets.date
+              <!-- @tickets.id <br>
+              @tickets.title <br>
+              @tickets.desc <br>
+              @tickets.severity <br>
+              @tickets.owner <br>
+              @tickets.responsible <br>
+              @tickets.status<br>
+              @tickets.date<br> -->
 
-            </li>
+<form action="/tickets/@tickets.id/update" method="POST" >
+  <dl class=" " id="Id_field">
+      <dt><label for="Id">Id</label></dt>
+      <dd>
+      <input type="text" id="Id" name="Id" value="@tickets.id" readonly>
+      </dd>
+  </dl>
 
-    </ul>
+  <dl class=" " id="title_field">
+      <dt><label for="title">title</label></dt>
+      <dd>
+      <input type="text" id="title" name="title" value="@tickets.title" >
+      </dd><dd class="info">Required</dd>
+  </dl>
 
+  <dl class=" " id="desc_field">
+      <dt><label for="desc">desc</label></dt>
+      <dd>
+      <textarea id="desc" name="desc">@tickets.desc</textarea>
+      </dd>
+  </dl>
+
+  <dl class=" " id="severity_field">
+      <dt><label for="severity">severity</label></dt>
+      <dd>
+      <input type="text" id="severity" name="severity" value="@tickets.severity" >
+      </dd>
+  </dl>
+
+  <dl class=" " id="owner_field">
+      <dt><label for="owner">owner</label></dt>
+      <dd>
+      <input type="text" id="owner" name="owner" value="@tickets.owner" >
+  </dd>
+  </dl>
+
+  <dl class=" " id="responsible_field">
+      <dt><label for="responsible">responsible</label></dt>
+      <dd>
+      <input type="text" id="responsible" name="responsible" value="@tickets.responsible" >
+      </dd>
+  </dl>
+
+  <dl class=" " id="status_field">
+      <dt><label for="status">status</label></dt>
+      <dd>
+      <input type="text" id="status" name="status" value="@tickets.status" >
+      </dd>
+  </dl>
+
+  <dl class=" " id="date_field">
+      <dt><label for="date">date</label></dt>
+      <dd>
+      <input type="date" id="date" name="date" value="@tickets.date" >
+      </dd>
+  </dl>
+
+    <input type="submit" value="Update">
+  </form>
 }

@@ -12,12 +12,7 @@
               <a href="@routes.TicketController.displayTicket(tickets.id)">
               @tickets.title
               </a>
-
-
-                @form(routes.TicketController.deleteTicket(tickets.id)) {
-                    <input type="submit" value="Delete">
-
-                }
+              @form(routes.TicketController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
             </li>
         }
     </ul>
@@ -26,16 +21,22 @@
 
     @form(routes.TicketController.newTicket()) {
 
-        @inputText(ticketForm("title"))
-        @inputText(ticketForm("desc"))
-        @inputText(ticketForm("severity"))
-        @inputText(ticketForm("owner"))
-        @inputText(ticketForm("responsible"))
-        @inputText(ticketForm("status"))
+        @inputText(ticketForm("title"),'placeholder -> "Your Title")
+        @textarea(ticketForm("desc"), 'placeholder -> "Description")
+        @inputText(ticketForm("severity"), 'placeholder -> "Severity")
+        <!-- @select(
+           ticketForm("severity"),
+           options(Seq("Urgent","High","Medium","Low")),
+           '_label -> "Severity", '_default -> "-- Select Level --"
+        ) -->
+        @inputText(ticketForm("owner"),'placeholder -> "Owner")
+        @inputText(ticketForm("responsible"),'placeholder -> "Responsible")
+        @inputText(ticketForm("status"),'placeholder -> "Status")
         @inputDate(ticketForm("date"))
 
         <input type="submit" value="Save">
 
     }
+
 
 }

@@ -28,9 +28,9 @@ final static Log _log = LogFactory.getLog(TicketController.class);
     	Form<TicketModel> filledForm = ticketForm.bindFromRequest();
     	if(filledForm.hasErrors()){
     		return badRequest(
-    			views.html.tickets.render(TicketModel.all(), filledForm)
-			);
-    	} else {
+    			views.html.tickets.render(TicketModel.all(), filledForm));
+    	}
+      else {
     		TicketModel.create(filledForm.get());
     		return redirect(routes.TicketController.tickets());
     	}
@@ -39,6 +39,22 @@ final static Log _log = LogFactory.getLog(TicketController.class);
     public static Result deleteTicket(Long id){
     	TicketModel.delete(id);
     	return redirect(routes.TicketController.tickets());
+    }
+
+    public static Result updateTicket(Long id){
+      Form<TicketModel> filledForm = displayTicketForm.bindFromRequest();
+      if(filledForm.hasErrors()){
+        return badRequest("mali");
+    }
+    else{
+      TicketModel.update(id);
+      return redirect(routes.TicketController.tickets());
+    }
+    }
+    public static Result editTicket(Long id){
+      //*TicketModel var = TicketModel.show(id);
+      //*return ok("hmm"+var.title);
+      return ok(views.html.displayTicketForm.render(TicketModel.show(id), ticketForm));
     }
 
     //* public static Result updateTicket(Long id){
