@@ -1,0 +1,37 @@
+@(tickets: List[TicketModel], ticketForm: Form[TicketModel])
+
+@import helper._
+
+@main("Ticket list") {
+
+    <h1>@tickets.size() Ticket(s)</h1>
+
+    <ul>
+        @for(tickets <- tickets) {
+            <li>
+                @tickets.title
+
+                @form(routes.TicketController.deleteTicket(tickets.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+
+    <h2>Add a new Ticket</h2>
+
+    @form(routes.TicketController.newTicket()) {
+
+        @inputText(ticketForm("title"))
+        @inputText(ticketForm("desc"))
+        @inputText(ticketForm("severity"))
+        @inputText(ticketForm("owner"))
+        @inputText(ticketForm("responsible"))
+        @inputText(ticketForm("status"))
+        @inputDate(ticketForm("date"))
+
+        <input type="submit" value="Create">
+
+    }
+
+}
