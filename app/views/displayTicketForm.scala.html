@@ -1,0 +1,24 @@
+@(tickets: TicketModel, displayTicketForm: Form[TicketModel])
+
+@import helper._
+
+@main("Ticket Content") {
+
+    <h1>Ticket Content</h1>
+
+    <ul>
+            <li>
+              @tickets.id
+              @tickets.title
+              @tickets.desc
+              @tickets.severity
+              @tickets.owner
+              @tickets.responsible
+              @tickets.status
+              @tickets.date
+
+            </li>
+
+    </ul>
+
+}

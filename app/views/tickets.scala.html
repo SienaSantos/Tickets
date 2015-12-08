@@ -9,10 +9,14 @@
     <ul>
         @for(tickets <- tickets) {
             <li>
-                @tickets.title
+              <a href="@routes.TicketController.displayTicket(tickets.id)">
+              @tickets.title
+              </a>
+
 
                 @form(routes.TicketController.deleteTicket(tickets.id)) {
                     <input type="submit" value="Delete">
+
                 }
             </li>
         }
@@ -30,7 +34,7 @@
         @inputText(ticketForm("status"))
         @inputDate(ticketForm("date"))
 
-        <input type="submit" value="Create">
+        <input type="submit" value="Save">
 
     }
 

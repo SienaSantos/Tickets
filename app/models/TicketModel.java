@@ -25,11 +25,10 @@ public class TicketModel extends Model {
 
   public Date date;
 
-  public static Finder<Long,TicketModel> find = new Finder(
-  	Long.class, TicketModel.class
-  );
+  public static Finder<Long,TicketModel> find = new Finder(Long.class, TicketModel.class);
 
   public static List<TicketModel> all() {
+
     return find.all();
   }
 
@@ -40,5 +39,14 @@ public class TicketModel extends Model {
   public static void delete(Long id) {
   	find.ref(id).delete();
   }
+
+  public static void update(Long id) {
+    find.ref(id).update();
+  }
+
+  public static TicketModel show(Long id) {
+    return 	find.byId(id);
+  }
+
 
 }

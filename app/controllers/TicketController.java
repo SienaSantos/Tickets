@@ -7,7 +7,12 @@ import play.mvc.*;
 
 import views.html.*;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class TicketController extends Controller {
+
+final static Log _log = LogFactory.getLog(TicketController.class);
 
     public static Result index() {
         return redirect(routes.TicketController.tickets());
@@ -36,6 +41,23 @@ public class TicketController extends Controller {
     	return redirect(routes.TicketController.tickets());
     }
 
+    //* public static Result updateTicket(Long id){
+    //*   TicketModel.delete(id);
+    //*   return redirect(routes.TicketController.tickets());
+    //* }
+
+    //* public static Result findTicket(Long id){
+    //*   TicketModel.show(id);
+    //*   return redirect(routes.TicketController.displayTicket());
+    //* }
+
+    public static Result displayTicket(Long id){
+      //*TicketModel var = TicketModel.show(id);
+      //*return ok("hmm"+var.title);
+      return ok(views.html.displayTicketForm.render(TicketModel.show(id), ticketForm));
+    }
+
     static Form<TicketModel> ticketForm = Form.form(TicketModel.class);
+    static Form<TicketModel> displayTicketForm = Form.form(TicketModel.class);
 
 }
