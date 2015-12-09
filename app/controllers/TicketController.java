@@ -10,7 +10,7 @@ import views.html.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class TicketController extends Controller {
+public class TicketsController extends Controller {
 
 final static Log _log = LogFactory.getLog(TicketController.class);
 
@@ -24,7 +24,7 @@ final static Log _log = LogFactory.getLog(TicketController.class);
 	  	);
     }
 
-    public static Result newTicket(){
+    public static Result createTicket(){
     	Form<TicketModel> filledForm = ticketForm.bindFromRequest();
     	if(filledForm.hasErrors()){
     		return badRequest(
@@ -67,7 +67,7 @@ final static Log _log = LogFactory.getLog(TicketController.class);
     //*   return redirect(routes.TicketController.displayTicket());
     //* }
 
-    public static Result displayTicket(Long id){
+    public static Result showTicket(Long id){
       //*TicketModel var = TicketModel.show(id);
       //*return ok("hmm"+var.title);
       return ok(views.html.displayTicketForm.render(TicketModel.show(id), ticketForm));
