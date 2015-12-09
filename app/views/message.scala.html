@@ -1,0 +1,33 @@
+@(tickets: Ticket, inboxForm: Form[Ticket], comments: List[Comment])
+
+@import helper._
+
+@main("Ticket Content") {
+
+    <h1>Ticket Content</h1>
+
+              @tickets.id <br>
+              @tickets.title <br>
+              @tickets.desc <br>
+              @tickets.severity <br>
+              @tickets.owner <br>
+              @tickets.responsible <br>
+              @tickets.status<br>
+              @tickets.date<br>
+
+              <ul>
+                  @for(comment <- comments) {
+
+                      <li><a href="routes.TicketsController.comment()">@comment.comment_desc</a>
+
+                      </li>
+                  }
+              </ul>
+
+              <h4>Comment/s</h4>
+
+              @form(routes.MessagesController.createComment()) {
+              @textarea(inboxForm("comment_desc"), 'placeholder -> "Your Comment")
+              <input type="submit" value="Save">
+            }
+}

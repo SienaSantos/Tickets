@@ -1,0 +1,18 @@
+@(tickets: List[Ticket], ticketForm: Form[Ticket])
+
+@import helper._
+
+@main("Inbox") {
+
+    <h1>@tickets.size() Ticket(s)</h1>
+
+    <ul>
+        @for(tickets <- tickets) {
+            <li>
+              <a href="@routes.MessagesController.showTicket(tickets.id)">@tickets.title</a>
+              @form(routes.MessagesController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
+            </li>
+        }
+    </ul>
+
+}

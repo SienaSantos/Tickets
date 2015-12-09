@@ -13,5 +13,17 @@ POST /tickets/:id/delete              controllers.TicketsController.deleteTicket
 GET /tickets/:id/show                 controllers.TicketsController.showTicket(id: Long)
 POST /tickets/:id/update              controllers.TicketsController.updateTicket(id: Long)
 
+# Messages
+# GET /tickets/:id/messages             controllers.MessagesController.messages()
+# POST /tickets/:id/messages
+# GET /tickets/:id/messages/:id
+# DELETE /tickets/:id/messages/:id
+
+# Messages
+GET /inbox 					                controllers.MessagesController.messages()
+POST /inbox/ 						            controllers.MessagesController.createComment()
+GET /inbox/:id/show                 controllers.MessagesController.showTicket(id: Long)
+POST /inbox/:id/delete              controllers.MessagesController.deleteTicket(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -51,8 +51,8 @@ public class Ticket extends Model {
     ticket.owner = tic.owner;
     ticket.responsible = tic.responsible;
     ticket.status = tic.status;
-    ticket.date = tic.status;
-    Logger.debug(tic.title);
+    ticket.date = tic.date;
+    //* Logger.debug(tic.title);
     ticket.save();
   }
 

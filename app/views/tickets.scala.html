@@ -2,31 +2,29 @@
 
 @import helper._
 
-@main("Ticket list") {
+@main("Tickets") {
+  <h1>@tickets.size() tickets(s)</h1>
 
-    <h1>@tickets.size() Ticket(s)</h1>
+  <ul>
+      @for(tickets <- tickets) {
+          <li><a href="routes.TicketsController.showTicket(@tickets.id)">@tickets.title</a>
 
-    <ul>
-        @for(tickets <- tickets) {
-            <li>
-              <a href="@routes.TicketsController.showTicket(tickets.id)">@tickets.title</a>
-              @form(routes.TicketsController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
-            </li>
-        }
-    </ul>
+          </li>
+      }
+  </ul>
 
-    <h2>Add a new Ticket</h2>
+    <h2>Create a new Ticket</h2>
 
     @form(routes.TicketsController.createTicket()) {
 
         @inputText(ticketForm("title"),'placeholder -> "Your Title")
         @textarea(ticketForm("desc"), 'placeholder -> "Description")
-        @inputText(ticketForm("severity"), 'placeholder -> "Severity")
-        <!-- @select(
+        <!-- @inputText(ticketForm("severity"), 'placeholder -> "Severity") -->
+        @select(
            ticketForm("severity"),
            options(Seq("Urgent","High","Medium","Low")),
            '_label -> "Severity", '_default -> "-- Select Level --"
-        ) -->
+        )
         @inputText(ticketForm("owner"),'placeholder -> "Owner")
         @inputText(ticketForm("responsible"),'placeholder -> "Responsible")
         @inputText(ticketForm("status"),'placeholder -> "Status")
@@ -35,6 +33,7 @@
         <input type="submit" value="Save">
 
     }
+
 
 
 }

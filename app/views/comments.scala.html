@@ -1,0 +1,17 @@
+@(comments: List[Comment], messageForm: Form[Comment])
+
+@import helper._
+
+@main("Tickets") {
+  <h1>@comments.size() comments(s)</h1>
+
+  <ul>
+      @for(comments <- comments) {
+        
+          <li><a href="routes.TicketsController.comment()">@comments.comment_desc</a>
+
+          </li>
+      }
+  </ul>
+
+}

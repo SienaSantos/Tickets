@@ -45,29 +45,17 @@ final static Log _log = LogFactory.getLog(TicketsController.class);
     public static Result updateTicket(Long id){
       Form<Ticket> filledForm = displayTicketForm.bindFromRequest();
       if(filledForm.hasErrors()){
-        return badRequest("mali");
+        return badRequest("Please check ");
     }
     else{
       Ticket.update(filledForm.get(), id);
-      //* Logger.debug("pasok");
       return redirect(routes.TicketsController.tickets());
     }
     }
     public static Result editTicket(Long id){
-      //*Ticket var = Ticket.show(id);
-      //*return ok("hmm"+var.title);
       return ok(views.html.displayTicketForm.render(Ticket.show(id), ticketForm));
     }
 
-    //* public static Result updateTicket(Long id){
-    //*   Ticket.delete(id);
-    //*   return redirect(routes.TicketsController.tickets());
-    //* }
-
-    //* public static Result findTicket(Long id){
-    //*   Ticket.show(id);
-    //*   return redirect(routes.TicketsController.displayTicket());
-    //* }
 
     public static Result showTicket(Long id){
       //*Ticket var = Ticket.show(id);
