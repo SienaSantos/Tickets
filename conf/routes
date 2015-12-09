@@ -7,12 +7,11 @@ GET     /                           controllers.Application.index()
 
 # Tickets
 
-GET /tickets 							            controllers.TicketController.tickets()
-GET /tickets 							            controllers.TicketController.editTicket(id: Long)
-POST /tickets 						            controllers.TicketController.newTicket()
-POST /tickets/:id/delete              controllers.TicketController.deleteTicket(id: Long)
-GET /tickets/:id/show                 controllers.TicketController.displayTicket(id: Long)
-POST /tickets/:id/update              controllers.TicketController.updateTicket(id: Long)
+GET /tickets 					      controllers.TicketsController.tickets()
+POST /tickets 						  controllers.TicketsController.createTicket()
+DELETE /tickets/:id/delete            controllers.TicketsController.deleteTicket(id: Long)
+GET /tickets/:id/show                 controllers.TicketsController.showTicket(id: Long)
+POST /tickets/:id/update              controllers.TicketsController.updateTicket(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

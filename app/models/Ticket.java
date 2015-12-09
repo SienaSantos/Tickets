@@ -9,7 +9,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-public class TicketModel extends Model {
+public class Ticket extends Model {
 
   @Id
   public Long id;
@@ -46,6 +46,6 @@ public class TicketModel extends Model {
   }
 
   public static TicketModel show(Long id) {
-    return 	find.byId(id);
+    return find.byId(id);
   }
 }
