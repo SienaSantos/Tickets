@@ -3,7 +3,7 @@
 
 # --- !Ups
 
-create table ticket_model (
+create table ticket (
   id                        bigint not null,
   title                     varchar(255),
   desc                      varchar(255),
@@ -11,11 +11,11 @@ create table ticket_model (
   owner                     varchar(255),
   responsible               varchar(255),
   status                    varchar(255),
-  date                      timestamp,
-  constraint pk_ticket_model primary key (id))
+  date                      varchar(255),
+  constraint pk_ticket primary key (id))
 ;
 
-create sequence ticket_model_seq;
+create sequence ticket_seq;
 
 
 
@@ -24,9 +24,9 @@ create sequence ticket_model_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists ticket_model;
+drop table if exists ticket;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists ticket_model_seq;
+drop sequence if exists ticket_seq;
 

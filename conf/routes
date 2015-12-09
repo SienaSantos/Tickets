@@ -7,9 +7,9 @@ GET     /                           controllers.Application.index()
 
 # Tickets
 
-GET /tickets 					      controllers.TicketsController.tickets()
-POST /tickets 						  controllers.TicketsController.createTicket()
-DELETE /tickets/:id/delete            controllers.TicketsController.deleteTicket(id: Long)
+GET /tickets 					                controllers.TicketsController.tickets()
+POST /tickets 						            controllers.TicketsController.createTicket()
+POST /tickets/:id/delete              controllers.TicketsController.deleteTicket(id: Long)
 GET /tickets/:id/show                 controllers.TicketsController.showTicket(id: Long)
 POST /tickets/:id/update              controllers.TicketsController.updateTicket(id: Long)
 

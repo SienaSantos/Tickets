@@ -1,4 +1,4 @@
-@(tickets: TicketModel, displayTicketForm: Form[TicketModel])
+@(tickets: Ticket, displayTicketForm: Form[Ticket])
 
 @import helper._
 
@@ -68,7 +68,7 @@
   <dl class=" " id="date_field">
       <dt><label for="date">date</label></dt>
       <dd>
-      <input type="date" id="date" name="date" value="@tickets.date" >
+      <input type="text" id="date" name="date" value="@tickets.date" >
       </dd>
   </dl>
 

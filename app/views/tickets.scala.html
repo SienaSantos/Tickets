@@ -1,4 +1,4 @@
-@(tickets: List[TicketModel], ticketForm: Form[TicketModel])
+@(tickets: List[Ticket], ticketForm: Form[Ticket])
 
 @import helper._
 
@@ -9,17 +9,15 @@
     <ul>
         @for(tickets <- tickets) {
             <li>
-              <a href="@routes.TicketController.displayTicket(tickets.id)">
-              @tickets.title
-              </a>
-              @form(routes.TicketController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
+              <a href="@routes.TicketsController.showTicket(tickets.id)">@tickets.title</a>
+              @form(routes.TicketsController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
             </li>
         }
     </ul>
 
     <h2>Add a new Ticket</h2>
 
-    @form(routes.TicketController.newTicket()) {
+    @form(routes.TicketsController.createTicket()) {
 
         @inputText(ticketForm("title"),'placeholder -> "Your Title")
         @textarea(ticketForm("desc"), 'placeholder -> "Description")
@@ -32,7 +30,7 @@
         @inputText(ticketForm("owner"),'placeholder -> "Owner")
         @inputText(ticketForm("responsible"),'placeholder -> "Responsible")
         @inputText(ticketForm("status"),'placeholder -> "Status")
-        @inputDate(ticketForm("date"))
+        @inputText(ticketForm("date") ,'placeholder -> "MM-dd-yyyy")
 
         <input type="submit" value="Save">
 
