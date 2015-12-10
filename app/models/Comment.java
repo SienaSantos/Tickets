@@ -19,7 +19,7 @@ public class Comment extends Model {
   public String comment_desc;
 
   @ManyToOne
-  public Ticket id;
+  public Long id;
 
 
 
@@ -30,9 +30,10 @@ public class Comment extends Model {
     return find.all();
   }
 
-  public static void create(Comment comment) {
-    Logger.debug(comment.comment_id +" "+ comment.comment_desc+" " +comment.id);
+  public static void create(Comment comment , Long id) {
+    comment.id = id;
     comment.save();
+    Logger.debug(comment.comment_id +" "+ comment.comment_desc+" " +comment.id);
   }
 
   public static void delete(Long id) {

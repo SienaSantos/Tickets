@@ -42,14 +42,14 @@ final static Log _log = LogFactory.getLog(MessagesController.class);
     	return redirect(routes.TicketsController.tickets());
     }
 
-    public static Result createComment(){
+    public static Result createComment(Long id){
       Form<Comment> filledForm = messageForm.bindFromRequest();
       if(filledForm.hasErrors()){
         return badRequest("mali");
       }
       else {
-        Comment.create(filledForm.get());
-        return redirect(routes.MessagesController.messages());
+        Comment.create(filledForm.get(), id);
+        return redirect(routes.MessagesController.showTicket(id));
       }
     }
     //* public static Result deleteComment(Long id){

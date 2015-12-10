@@ -21,7 +21,7 @@ POST /tickets/:id/update              controllers.TicketsController.updateTicket
 
 # Messages
 GET /inbox 					                controllers.MessagesController.messages()
-POST /inbox/ 						            controllers.MessagesController.createComment()
+POST /inbox/:id 						        controllers.MessagesController.createComment(id: Long)
 GET /inbox/:id/show                 controllers.MessagesController.showTicket(id: Long)
 POST /inbox/:id/delete              controllers.MessagesController.deleteTicket(id: Long)
 

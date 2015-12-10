@@ -4,14 +4,14 @@
 # --- !Ups
 
 create table comment (
-  comment_id                bigint not null auto_increment,
+  comment_id                bigint not null,
   comment_desc              varchar(255),
-  id_id                     bigint,
+  id                        bigint,
   constraint pk_comment primary key (comment_id))
 ;
 
 create table ticket (
-  id                        bigint not null auto_increment,
+  id                        bigint not null,
   title                     varchar(255),
   desc                      varchar(255),
   severity                  varchar(255),
@@ -26,8 +26,6 @@ create sequence comment_seq;
 
 create sequence ticket_seq;
 
-alter table comment add constraint fk_comment_id_1 foreign key (id_id) references ticket (id) on delete restrict on update restrict;
-create index ix_comment_id_1 on comment (id_id);
 
 
 
@@ -44,3 +42,4 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists comment_seq;
 
 drop sequence if exists ticket_seq;
+

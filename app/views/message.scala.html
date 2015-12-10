@@ -11,7 +11,7 @@
           <div class="row">
               <div class="col-xs-12">
                   <h1 class="page-header">
-                      <small>Hi Username</small>
+                      <small>Hi @tickets.responsible</small>
                       <!-- <small>Subheading</small> -->
                   </h1>
               </div>
@@ -29,21 +29,25 @@
                       Responsible : @tickets.responsible <br>
                       Status      : @tickets.status <br>
                       Date        : @tickets.date <br>
+
                     </p>
                   </div>
               </div>
               <!-- panel-info -->
               <small>Comment/s</small>
               <ul>
-                  @for(comment <- comments) {
-
-                      <li><a href="routes.TicketsController.comment()">Username :  @comment.comment_desc </a>
-
+                @for(comment <- comments) {
+                  @if(tickets.id == comment.id) {
+                    <li>Username : <a href="routes.TicketsController.comment()">  @comment.comment_desc </a>
+                      Ticket Id : @comment.id
+                      Comment Id : @comment.comment_id
                       </li>
+                    }
                   }
               </ul>
 
-              <form action="/inbox/" method="POST" class="form-horizontal" role="form">
+              <form action="/inbox/@tickets.id" method="POST" class="form-horizontal" role="form">
+
                 <div class="divider">
 
                 </div>
@@ -76,6 +80,12 @@
 
       </div>
       <!-- /.container-->
+
+      <h4>Comment/s</h4>
++
++              @form(routes.MessagesController.createComment(tickets.id)) {
++              @textarea(inboxForm("comment_desc"), 'placeholder -> "Your Comment")
++              <input type="submit" value="Save">}
 
   </div>
 }
