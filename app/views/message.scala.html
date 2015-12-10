@@ -68,6 +68,7 @@
 
                 <div class="form-group">
                   <div class="col-sm-offset-5 col-sm-10 btns">
+                      <a href="@routes.MessagesController.messages()"></a>
                       <button type="cancel" class="btn" style="background-color: #969EA6;">Back</button>
                       <button type="submit" class = "btn" >Comment</button>
                       <button type="cancel" class="btn" style="background-color: #D60A00;">Close Ticket</button>
@@ -77,15 +78,7 @@
 
           </div>
           <!-- /.row -->
-
       </div>
       <!-- /.container-->
-
-      <h4>Comment/s</h4>
-+
-+              @form(routes.MessagesController.createComment(tickets.id)) {
-+              @textarea(inboxForm("comment_desc"), 'placeholder -> "Your Comment")
-+              <input type="submit" value="Save">}
-
   </div>
 }
