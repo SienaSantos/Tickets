@@ -310,3 +310,16 @@ ul.alert-dropdown {
 .tickets:hover{
   text-decoration: none;
 }
+.btndel{
+  background-color: #0272ba;
+  color: #fff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px 5px 5px 5px;
+  font-weight: 100;
+}
+.panel-heading{
+  font-size: 17px;
+}
+.panel-body p{
+  font-size: 16px;
+}

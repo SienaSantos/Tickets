@@ -28,8 +28,10 @@ final static Log _log = LogFactory.getLog(TicketsController.class);
     public static Result createTicket(){
     	Form<Ticket> filledForm = ticketForm.bindFromRequest();
     	if(filledForm.hasErrors()){
+        Logger.debug("hm  "+filledForm);
     		return badRequest(
     			views.html.tickets.render(Ticket.all(), filledForm));
+
     	}
       else {
     		Ticket.create(filledForm.get());

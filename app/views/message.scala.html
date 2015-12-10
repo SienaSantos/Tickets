@@ -4,30 +4,78 @@
 
 @main("Ticket Content") {
 
-    <h1>Ticket Content</h1>
+  <div id="page-wrapper">
 
-              @tickets.id <br>
-              @tickets.title <br>
-              @tickets.desc <br>
-              @tickets.severity <br>
-              @tickets.owner <br>
-              @tickets.responsible <br>
-              @tickets.status<br>
-              @tickets.date<br>
+      <div class="container">
+          <!-- Page Heading -->
+          <div class="row">
+              <div class="col-xs-12">
+                  <h1 class="page-header">
+                      <small>Hi Username</small>
+                      <!-- <small>Subheading</small> -->
+                  </h1>
+              </div>
+              <div class="panel panel-info col-xs-12">
+                <div class="panel-heading">@tickets.title</div>
+                  <div class="panel-body">
+                    <p>
+                      Welcome to team inbox. This is your Ticket.
+                    </p>
 
+                    <p>
+                      Description : @tickets.desc <br>
+                      Severity    : @tickets.severity <br>
+                      Owner       : @tickets.owner <br>
+                      Responsible : @tickets.responsible <br>
+                      Status      : @tickets.status <br>
+                      Date        : @tickets.date <br>
+                    </p>
+                  </div>
+              </div>
+              <!-- panel-info -->
+              <small>Comment/s</small>
               <ul>
                   @for(comment <- comments) {
 
-                      <li><a href="routes.TicketsController.comment()">@comment.comment_desc</a>
+                      <li><a href="routes.TicketsController.comment()">Username :  @comment.comment_desc </a>
 
                       </li>
                   }
               </ul>
 
-              <h4>Comment/s</h4>
+              <form action="/inbox/" method="POST" class="form-horizontal" role="form">
+                <div class="divider">
 
-              @form(routes.MessagesController.createComment()) {
-              @textarea(inboxForm("comment_desc"), 'placeholder -> "Your Comment")
-              <input type="submit" value="Save">
-            }
+                </div>
+
+                <div class="form-group" id="comment_desc_field">
+                  <i class="fa fa-user col-sm-1 col-sm-offset-1 this-icon"></i>
+                  <div class="col-sm-10">
+                    <textarea id="comment_desc" name="comment_desc" class="form-control" rows="3" placeholder="Your comment..."></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="dept">Attachments</label>
+                  <div class="col-sm-10">
+                    <input type="file" style="margin-top:5px;">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-offset-5 col-sm-10 btns">
+                      <button type="cancel" class="btn" style="background-color: #969EA6;">Back</button>
+                      <button type="submit" class = "btn" >Comment</button>
+                      <button type="cancel" class="btn" style="background-color: #D60A00;">Close Ticket</button>
+                  </div>
+                </div>
+              </form>
+
+          </div>
+          <!-- /.row -->
+
+      </div>
+      <!-- /.container-->
+
+  </div>
 }

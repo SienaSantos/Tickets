@@ -3,37 +3,102 @@
 @import helper._
 
 @main("Tickets") {
-  <h1>@tickets.size() tickets(s)</h1>
+    <!-- page-wrapper start -->
+    <div id="page-wrapper">
 
-  <ul>
-      @for(tickets <- tickets) {
-          <li><a href="routes.TicketsController.showTicket(@tickets.id)">@tickets.title</a>
+        <div class="container-fluid">
 
-          </li>
-      }
-  </ul>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Create a New Ticket
+                        <!-- <small>Subheading</small> -->
+                    </h1>
+                    <form action="/tickets" method="POST" class="form-horizontal" role="form">
 
-    <h2>Create a new Ticket</h2>
+                      <div class="form-group" id="title_field">
+                        <label class="control-label col-sm-2" for="title">Title</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <input type="text" class="form-control" id="title" name="title" placeholder="Your Title">
+                          </dd><dd class="info">Required</dd>
+                        </div>
+                      </div>
 
-    @form(routes.TicketsController.createTicket()) {
+                      <div class="form-group" id="desc_field">
+                        <label class="control-label col-sm-2" for="desc">Message</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <textarea id="desc" name="desc" class="form-control" rows="3" placeholder="Description"></textarea>
+                          </dd>
+                        </div>
+                      </div>
 
-        @inputText(ticketForm("title"),'placeholder -> "Your Title")
-        @textarea(ticketForm("desc"), 'placeholder -> "Description")
-        <!-- @inputText(ticketForm("severity"), 'placeholder -> "Severity") -->
-        @select(
-           ticketForm("severity"),
-           options(Seq("Urgent","High","Medium","Low")),
-           '_label -> "Severity", '_default -> "-- Select Level --"
-        )
-        @inputText(ticketForm("owner"),'placeholder -> "Owner")
-        @inputText(ticketForm("responsible"),'placeholder -> "Responsible")
-        @inputText(ticketForm("status"),'placeholder -> "Status")
-        @inputText(ticketForm("date") ,'placeholder -> "MM-dd-yyyy")
+                      <div class="form-group" id="severity_field">
+                        <label class="control-label col-sm-2" for="severity">Severity</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <select class="form-control" id="severity" name="severity">
+                              <option class="blank" value="">-- Select Level --</option>
+                              <option value="Low">Low</option>
+                              <option value="Medium">Medium</option>
+                              <option value="High">High</option>
+                              <option value="Urgent" >Urgent</option>
+                          </select>
+                        </dd>
+                        </div>
+                      </div>
 
-        <input type="submit" value="Save">
+                      <div class="form-group" id="owner_field">
+                        <label class="control-label col-sm-2" for="owner">Owner</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <input type="text" class="form-control" id="owner" name ="owner" placeholder="Owner">
+                        </dd>
+                        </div>
+                      </div>
+                      <div class="form-group" id="responsible_field">
+                        <label class="control-label col-sm-2" for="responsible">Responsible</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <input type="text" class="form-control" id="responsible" name ="responsible" placeholder="Responsible">
+                        </dd>
+                        </div>
+                      </div>
+                      <div class="form-group" id="status_field">
+                        <label class="control-label col-sm-2" for="status">Status</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <input type="text" class="form-control" id="status" name ="status" placeholder="Status">
+                        </dd>
+                        </div>
+                      </div>
+                      <div class="form-group" id="date_field">
+                        <label class="control-label col-sm-2" for="date">Date</label>
+                        <div class="col-sm-10">
+                          <dd>
+                          <input type="date" class="form-control" id="date" name ="date" placeholder="Status">
+                        </dd>
+                        </div>
+                      </div>
 
-    }
+                      <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-10 btns">
+                            <button type="submit" class = "btn" >Submit</button>
+                            <button type="cancel" class="btn" style="background-color: #969EA6;">Cancel</button>
+                        </div>
+                      </div>
+                  </form>
+                </div>
+            </div>
+            <!-- /.row -->
 
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
 
 
 }
