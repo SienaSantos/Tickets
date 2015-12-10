@@ -5,9 +5,24 @@
 <html>
     <head>
         <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/IA-logo.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")">
+
+        <!-- Morris Charts CSS -->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/plugins/morris.css")">
+
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/font-awesome/css/font-awesome.min.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("//fonts.googleapis.com/css?family=Raleway")" />
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/sb-admin.css")">
+
     </head>
     <body>
         @content

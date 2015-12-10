@@ -4,15 +4,55 @@
 
 @main("Inbox") {
 
-    <h1>@tickets.size() Ticket(s)</h1>
+    <div id="page-wrapper">
 
-    <ul>
-        @for(tickets <- tickets) {
-            <li>
-              <a href="@routes.MessagesController.showTicket(tickets.id)">@tickets.title</a>
-              @form(routes.MessagesController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
-            </li>
-        }
-    </ul>
+        <div class="container">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="page-header">
+                        Inbox
+                        <!-- <small>Subheading</small> -->
+                    </h1>
+                </div>
+                <div class="panel panel-info col-xs-12">
+                  <div class="panel-heading">@tickets.size() Ticket(s)</div>
+                    <div class="panel-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>Title</th>
+                              <th> </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @for(tickets <- tickets){
+                            <tr>
+
+                              <td>
+                                <a class ="tickets" href="@routes.MessagesController.showTicket(tickets.id)">@tickets.title</a>
+                              </td>
+                              <td>
+                                @form(routes.MessagesController.deleteTicket(tickets.id)) { <input type="submit" value="Delete">  }
+                              </td>
+
+                            </tr>
+                          }
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- table responsive  -->
+                    </div>
+
+                </div>
+                <!-- panel-info -->
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
 
 }
