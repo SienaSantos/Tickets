@@ -9,8 +9,4 @@ $('.toggle').click(function(){
     'padding-bottom': 'toggle',
     opacity: "toggle"
   }, "slow");
-
-});
-$("#btnSearch").click(function (e) {
-    $("#login").css('visibility','visible');
 });
