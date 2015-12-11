@@ -17,6 +17,7 @@ public class Comment extends Model {
 
   @Required
   public String comment_desc;
+  public String status;
 
   @ManyToOne
   public Long id;
@@ -38,6 +39,13 @@ public class Comment extends Model {
 
   public static void delete(Long id) {
   	find.ref(id).delete();
+  }
+
+
+   public static void status(long id){
+    Ticket ticket = Ticket.show(id);
+    ticket.status = ticket.status;
+    ticket.save();
   }
 
   /* public static void update(Ticket tic , Long id) {

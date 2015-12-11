@@ -35,7 +35,7 @@ final static Log _log = LogFactory.getLog(TicketsController.class);
     	}
       else {
     		Ticket.create(filledForm.get());
-        
+
     		return redirect(routes.TicketsController.tickets());
     	}
     }

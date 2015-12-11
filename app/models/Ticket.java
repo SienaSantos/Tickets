@@ -56,6 +56,11 @@ public class Ticket extends Model {
     ticket.save();
   }
 
+  public static void status(long id){
+    Ticket ticket = Ticket.show(id);
+    ticket.status = "open";
+    ticket.save();
+  }
   public static Ticket show(Long id) {
     return find.byId(id);
   }

@@ -32,6 +32,7 @@
 
                               <td>
                                 <a class ="tickets" href="@routes.MessagesController.showTicket(tickets.id)">@tickets.title</a>
+                                 <a class ="tickets" href="@routes.MessagesController.showTicket(tickets.id)">@tickets.status</a>
                               </td>
                               <td>
                                 @form(routes.MessagesController.deleteTicket(tickets.id)) {<input class = "btn btn-primary btndel pull-right " type="submit" value="Delete" >   }

@@ -33,6 +33,7 @@ final static Log _log = LogFactory.getLog(MessagesController.class);
       //*return ok("hmm"+var.title);
       List<Comment> comments = Comment.all();
       Ticket ticket = Ticket.show(id);
+      Comment.status(id);
 
       return ok(views.html.message.render(ticket, inboxForm, comments));
     }

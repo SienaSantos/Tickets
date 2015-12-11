@@ -1,0 +1,65 @@
+@(form: Form[Application.Login], users: List[User])
+
+<html>
+    <head>
+        <title>Zentasks</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+    </head>
+    <body>
+
+        <header>
+            <a href="@routes.Application.home" id="logo"><span>Zen</span>tasks</a>
+        </header>
+
+        @helper.form(routes.Application.authenticate) {
+
+            <h1>Sign in</h1>
+
+            <p>
+                <input type="email" id="email" name="email" placeholder="Email" >
+            </p>
+            <p>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit">Login</button>
+            </p>
+
+        }
+
+        <p class="note">
+            Try <em>guillaume@@sample.com</em> with <em>secret</em> as password.
+        </p>
+
+        @helper.form(routes.Application.createUser) {
+
+            <h1>Register</h1>
+
+            <p>
+                <input type="email" id="email" name="email" placeholder="Email" >
+            </p>
+            <p>
+
+                <input type="text" id="name" name="name" placeholder="Name">
+            </p>
+            <p>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit">Register</button>
+            </p>
+            <small>Accounts/s</small>
+            <ul>
+              @for(user <- users) {
+                  <li>email : @user.email
+                    name : @user.name
+                    password : @user.password
+                    </li>
+
+                }
+            </ul>
+        }
+
+    </body>
+</html>
