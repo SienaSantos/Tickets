@@ -338,3 +338,7 @@ ul.alert-dropdown {
 
 .container-fluid {background-color: #fff;}
 
+legend {
+  padding: 10px;
+}
+
