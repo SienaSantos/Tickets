@@ -8,9 +8,10 @@ GET     /home 							        controllers.Application.home()
 
 #Admin
 GET     /                           controllers.AdminController.index()
-#GET     /admin                      controllers.AdminController.home()
-#POST    /admin                     controllers.AdminController.createUser()
-#GET     /admin/user                controllers.AdminController.showAllUser()
+#GET    /admin                     controllers.AdminController.home()
+GET     /admin/user/new              controllers.AdminController.createNew()
+POST    /admin/user/new             controllers.AdminController.createUser()
+#GET    /admin/user                controllers.AdminController.showAllUser()
 
 # Authentication
 GET     /login                      controllers.Application.login()

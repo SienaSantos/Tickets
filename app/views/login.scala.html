@@ -38,10 +38,15 @@
         <small>Accounts/s</small>
         <ul>
           @for(user <- users) {
-              <li>email : @user.email
-                name : @user.name
-                password : @user.password
-                Admin     :@user.admin
+              <li>email : @user.email <br>
+                fname : @user.first_name <br>
+                password : @user.password<br>
+                lname: @user.last_name<br>
+                phone: @user.phone<br>
+                dept: @user.dept<br>
+                company: @user.company<br>
+                admin     :@user.admin<br>
+                //////
                 </li>
 
             }

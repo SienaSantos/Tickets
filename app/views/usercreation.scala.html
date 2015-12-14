@@ -1,0 +1,283 @@
+@(user : List[User], userCreationForm: Form[User])
+
+@import helper._
+
+@main("IA Innovations") {
+<div id="page-wrapper">
+
+  <div class="col-md-6">
+   <div class="container-fluid">
+  	<form action="/admin/user/new" method="POST" class="form-horizontal" role="form">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>User Creation</legend>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="email">Email</label>
+		  <div class="col-md-8">
+		  <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="first_name">First Name</label>
+		  <div class="col-md-8">
+		  <input id="first_name" name="first_name" type="text" placeholder="First Name" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="last_name">Last Name</label>
+		  <div class="col-md-8">
+		  <input id="last_name" name="last_name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="phone">Phone Number</label>
+		  <div class="col-md-8">
+		  <input id="phone" name="phone" type="text" placeholder="Phone Number" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Select Basic -->
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="dept">Department</label>
+		  <div class="col-md-8">
+		    <select id="dept" name="dept" class="form-control">
+		      <option value="None">None</option>
+		      <option value="Helpdesk">Helpdesk</option>
+		      <option value="Billing">Billing</option>
+		      <option value="Tech Support">Tech Support</option>
+		    </select>
+		  </div>
+		</div>
+
+		<!-- Password input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="password">Password</label>
+		  <div class="col-md-8">
+		    <input id="password" name="password" type="password" placeholder="placeholder" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="company">Company</label>
+		  <div class="col-md-8">
+		  <input id="company" name="company" type="text" placeholder="company" class="form-control input-md" required="">
+
+		  </div>
+		</div>
+
+		<!-- Multiple Checkboxes (inline) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="checkboxes">Ticket Access Control</label>
+		  <div class="col-md-8">
+		    <label class="checkbox-inline" for="checkboxes-0">
+		      <input type="checkbox" name="access" id="checkboxes-0" value="1">
+		      Create
+		    </label>
+		    <label class="checkbox-inline" for="checkboxes-1">
+		      <input type="checkbox" name="access" id="checkboxes-1" value="2">
+		      Read
+		    </label>
+		    <label class="checkbox-inline" for="checkboxes-2">
+		      <input type="checkbox" name="access" id="checkboxes-2" value="3">
+		      Update
+		    </label>
+		    <label class="checkbox-inline" for="checkboxes-3">
+		      <input type="checkbox" name="access" id="checkboxes-3" value="4">
+		      Delete
+		    </label>
+		  </div>
+		</div>
+
+		<!-- Multiple Radios (inline) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="radios">Admin</label>
+		  <div class="col-md-8">
+		    <label class="radio-inline" for="radios-0">
+		      <input type="radio" name="admin" id="radios-0" value="true" checked="checked">
+		      true
+		    </label>
+		    <label class="radio-inline" for="radios-1">
+		      <input type="radio" name="admin" id="radios-1" value="false">
+		      false
+		    </label>
+		  </div>
+		</div>
+    <div class="form-group">
+      <div class="col-md-8 col-md-offset-4">
+        <button type="submit" class="btn btn-default btn-block">Create</button>
+      </div>
+    </div>
+
+		</fieldset>
+	</form>
+  </div>
+  </div>
+
+
+  <div class="col-md-6">
+   <div class="container-fluid">
+  	<form class="form-horizontal">
+		<fieldset>
+		<legend>Service Level Agreement </legend>
+
+		<div class="sla">
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Severity Level 1 Incidents</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">Option one</option>
+						<option value="2">Option two</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Response Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Resolution Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="sla">
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Severity Level 2 Incidents</label>
+				<div class="col-md-8">
+					<select id="sla2" name="sla1" class="form-control">
+						<option value="1">Option one</option>
+						<option value="2">Option two</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Response Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Resolution Time</label>
+				<div class="col-md-8">
+					<select id="" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="sla">
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Severity Level 3 Incidents</label>
+				<div class="col-md-8">
+					<select id="sla3" name="sla1" class="form-control">
+						<option value="1">Option one</option>
+						<option value="2">Option two</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Response Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Resolution Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="sla">
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Severity Level 4 Incidents</label>
+				<div class="col-md-8">
+					<select id="sla4" name="sla1" class="form-control">
+						<option value="1">Option one</option>
+						<option value="2">Option two</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Response Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="sla1">Resolution Time</label>
+				<div class="col-md-8">
+					<select id="sla1" name="sla1" class="form-control">
+						<option value="1">1 Hour</option>
+						<option value="2">2 Hours</option>
+					</select>
+
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-8 col-md-offset-4">
+				<button class="btn btn-default btn-block">Create</button>
+			</div>
+		</div>
+
+		</fieldset>
+	</form>
+	</div>
+</div>
+</div>
+s
+}

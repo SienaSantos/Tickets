@@ -3,6 +3,16 @@
 
 # --- !Ups
 
+create table access (
+  id                        bigint not null,
+  can_add                   boolean,
+  can_read                  boolean,
+  can_update                boolean,
+  can_delete                boolean,
+  user_id                   bigint,
+  constraint pk_access primary key (id))
+;
+
 create table comment (
   comment_id                bigint not null,
   comment_desc              varchar(255),
@@ -25,11 +35,17 @@ create table ticket (
 
 create table user (
   email                     varchar(255) not null,
-  name                      varchar(255),
+  first_name                varchar(255),
+  last_name                 varchar(255),
+  phone                     varchar(255),
+  dept                      varchar(255),
   password                  varchar(255),
+  company                   varchar(255),
   admin                     varchar(255),
   constraint pk_user primary key (email))
 ;
+
+create sequence access_seq;
 
 create sequence comment_seq;
 
@@ -44,6 +60,8 @@ create sequence user_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
+drop table if exists access;
+
 drop table if exists comment;
 
 drop table if exists ticket;
@@ -51,6 +69,8 @@ drop table if exists ticket;
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists access_seq;
 
 drop sequence if exists comment_seq;
 

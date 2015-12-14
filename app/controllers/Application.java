@@ -43,7 +43,6 @@ public class Application extends Controller {
           }
           return "false";
         }
-
     }//*login
 
 

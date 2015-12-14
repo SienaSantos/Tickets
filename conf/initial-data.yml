@@ -5,12 +5,20 @@ users:
 
     - !!models.User
         email:      guillaume@sample.com
-        name:       Guillaume Bort
+        first_name: Guillaume
+        last_name:  Bort
+        phone:      "09093339900"
+        dept:       Billing
         password:   secret
+        company:    IA
         admin:      false
 
     - !!models.User
         email:      admin@admin.com
-        name:       Siena Santos
+        first_name: Siena
+        last_name:  Santos
+        phone:      "09093339900"
+        dept:       Admin
         password:   admin
+        company:    IA
         admin:      true

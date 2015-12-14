@@ -21,12 +21,18 @@ public class User extends Model {
     @Constraints.Required
     @Formats.NonEmpty
     public String email;
-
     @Constraints.Required
-    public String name;
-
+    public String first_name;
+    @Constraints.Required
+    public String last_name;
+    @Constraints.Required
+    public String phone;
+    @Constraints.Required
+    public String dept;
     @Constraints.Required
     public String password;
+    @Constraints.Required
+    public String company;
 
     public String admin;
 
