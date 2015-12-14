@@ -6,7 +6,7 @@ import play.*;
 import play.mvc.*;
 import java.util.*;
 
-import views.html.*;
+import views.html.admin.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -17,7 +17,7 @@ public class AdminController extends Controller {
 
     public static Result index() {
       return ok(
-        views.html.adminhomepage.render()
+        views.html.admin.adminhomepage.render()
       );
     }
 
@@ -28,7 +28,7 @@ public class AdminController extends Controller {
       {
         Logger.debug("hm  "+filledForm);
         return badRequest(
-          views.html.usercreation.render(User.findAll(),filledForm));
+          views.html.admin.usercreation.render(User.findAll(),filledForm));
       }
       else {
         User.create(filledForm.get());
@@ -39,7 +39,7 @@ public class AdminController extends Controller {
 
     public static Result createNew()
     {
-      return ok(views.html.usercreation.render(User.findAll(),userCreationForm));
+      return ok(views.html.admin.usercreation.render(User.findAll(),userCreationForm));
     }
 
     static Form<User> userCreationForm = Form.form(User.class);

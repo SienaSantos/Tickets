@@ -13,15 +13,17 @@ import play.Logger;
 public class Comment extends Model {
 
   @Id
-  public Long comment_id;
+  public Long id;
 
   @Required
   public String comment_desc;
   public String status;
 
-  @ManyToOne
-  public Long id;
+  @ManyToOne(cascade = CascadeType.ALL)
+  public Ticket ticket;
 
+  @ManyToOne(cascade = CascadeType.ALL)
+  public User user;
 
 
   public static Finder<Long,Comment> find = new Finder(Long.class, Comment.class);
@@ -34,7 +36,6 @@ public class Comment extends Model {
   public static void create(Comment comment , Long id) {
     comment.id = id;
     comment.save();
-    Logger.debug(comment.comment_id +" "+ comment.comment_desc+" " +comment.id);
   }
 
   public static void delete(Long id) {

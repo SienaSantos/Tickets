@@ -3,6 +3,7 @@ package models;
 import java.util.*;
 import play.data.validation.Constraints.*;
 import play.db.ebean.*;
+import play.data.format.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,7 +25,14 @@ public class Ticket extends Model {
   public String responsible;
   public String status;
 
+  @Formats.DateTime(pattern="MM/dd/yy")
   public String date;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  public User user;
+
+  @OneToMany(mappedBy = "ticket", cascade=CascadeType.ALL)
+  public List<Comment> comment = new ArrayList<Comment>();
 
 
 
