@@ -11,7 +11,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import play.Logger;
-
 import static play.data.Form.*;
 
 public class Application extends Controller {
@@ -36,7 +35,15 @@ public class Application extends Controller {
                 return "Invalid user or password";
             }
             return null;
+
         }
+        public String check(){
+          if(User.isAdmin(email, password) == "true"){
+            return "true";
+          }
+          return "false";
+        }
+
     }//*login
 
 
@@ -67,16 +74,22 @@ public class Application extends Controller {
     public static Result authenticate()
     {
         Form<Login> loginForm = form(Login.class).bindFromRequest();
-        Logger.debug("eto:  " + loginForm);
+        Logger.debug("eto:  " + loginForm.get().email);
         if(loginForm.hasErrors())
         {
             return badRequest(login.render(loginForm,User.findAll()));
         }
         else {
+            String level = User.isAdmin(loginForm.get().email,loginForm.get().password);
+            Logger.debug("eto yung nireturn:  " + level);
             session("email", loginForm.get().email);
-            return redirect(
-                routes.Application.home()
-            );
+              if(level.equals("true")){
+                return ok(views.html.adminhomepage.render());
+              }
+              else
+              return redirect(
+                  routes.Application.home()
+              );
         }
     }
 

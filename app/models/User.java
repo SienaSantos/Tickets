@@ -7,6 +7,8 @@ import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
 
+import play.Logger;
+
 /**
  * User entity managed by Ebean
  */
@@ -26,6 +28,8 @@ public class User extends Model {
     @Constraints.Required
     public String password;
 
+    public String admin;
+
     // -- Queries
 
     public static Model.Finder<String,User> find = new Model.Finder<String,User>(String.class, User.class);
@@ -39,7 +43,6 @@ public class User extends Model {
 
     public static void create(User user) {
       user.save();
-
     }
 
     /**
@@ -59,10 +62,20 @@ public class User extends Model {
             .findUnique();
     }
 
+    public static String isAdmin(String email , String password){
+      User user = User.show(email);
+      String str = user.admin;
+      return str;
+    }
+
     // --
 
     public String toString() {
         return "User(" + email + ")";
+    }
+
+    public static User show(String email) {
+      return find.byId(email);
     }
 
 }
