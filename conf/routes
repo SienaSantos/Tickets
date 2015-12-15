@@ -18,6 +18,7 @@ POST    /admin/user/:id/new        controllers.AdminController.accessCreate(id: 
 
 #GET    /admin/user                controllers.AdminController.showAllUser()
 
+
 # Authentication
 GET     /login                      controllers.Application.login()
 POST     /login/                    controllers.Application.createUser()
@@ -43,6 +44,18 @@ GET /inbox 					                controllers.MessagesController.messages()
 POST /inbox/:id 						        controllers.MessagesController.createComment(id: Long)
 GET /inbox/:id/show                 controllers.MessagesController.showTicket(id: Long)
 POST /inbox/:id/delete              controllers.MessagesController.deleteTicket(id: Long)
+
+#SLA
+
+
+# Incident
+GET /admin/incidents/new             controllers.IncidentController.incidents()
+POST /admin/incident               controllers.IncidentController.createIncident()
+#POST /admin/:id/delete             controllers.IncidentController.deleteIncident(id : Long)
+#GET /admin/:id/show                controllers.IncidentController.showIncident(id : Long)
+#POST /admin/:id/update             controllers.IncidentController.updateIncident(id : Long)
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

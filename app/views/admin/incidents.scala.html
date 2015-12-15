@@ -1,0 +1,48 @@
+@(incidents: List[Incident], incidentForm: Form[Incident])
+
+@import helper._
+
+@main("Incidents") {
+
+  <div id="page-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Create a New Incident
+
+                    <!-- <small>Subheading</small> -->
+                </h1>
+                <form action="/admin/incident" method="POST" class="form-horizontal" role="form">
+
+                  <div class="form-group" id="desc_field">
+                    <label class="control-label col-sm-2" for="desc">Description</label>
+                    <div class="col-sm-10">
+                      <dd>
+                      <input type="text" class="form-control" id="desc" name="incidentdesc" placeholder="Incident Description">
+                      </dd><dd class="info">Required</dd>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-10 btns">
+                        <button type="submit" class = "btn" >Submit</button>
+                        <button type="cancel" class="btn" style="background-color: #969EA6;">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+          <!-- /.row -->
+
+      </div>
+      <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+
+}
