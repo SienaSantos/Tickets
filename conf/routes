@@ -7,10 +7,15 @@ GET     /                           controllers.Application.index()
 GET     /home 							        controllers.Application.home()
 
 #Admin
-GET     /                           controllers.AdminController.index()
+GET     /                          controllers.AdminController.index()
 #GET    /admin                     controllers.AdminController.home()
-GET     /admin/user/new              controllers.AdminController.createNew()
-POST    /admin/user/new             controllers.AdminController.createUser()
+GET     /admin/user/new            controllers.AdminController.userNew()
+POST    /admin/user/new            controllers.AdminController.userCreate()
+GET     /admin/user/:id/new        controllers.AdminController.accessNew(id: Long)
+POST    /admin/user/:id/new        controllers.AdminController.accessCreate(id: Long)
+
+
+
 #GET    /admin/user                controllers.AdminController.showAllUser()
 
 # Authentication

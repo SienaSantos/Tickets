@@ -1,0 +1,17 @@
+@(useraccess : List[UserAccess])
+@import helper._
+
+@main("IA Innovations") {
+  <h1>Admin Homepage</h1>
+
+  @for(usera <- useraccess){
+    <li>
+    eto yung access id: @usera.id  <br>
+    eto yung canadd:  @usera.canadd<br>
+    eto yung canread: @usera.canread<br>
+    eto yung canupdate: @usera.canupdate<br>
+    eto yung candelete: @usera.candelete<br>
+
+  </li>
+  }
+}

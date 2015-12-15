@@ -17,7 +17,8 @@ public class User extends Model {
 
     private static final long serialVersionUID = 1L;
 
-	@Id
+	  @Id
+    @GeneratedValue
     public Long id;
     @Constraints.Required
     @Formats.NonEmpty
@@ -48,7 +49,7 @@ public class User extends Model {
 
     // -- Queries
 
-    public static Model.Finder<String,User> find = new Model.Finder<String,User>(String.class, User.class);
+    public static Model.Finder<Long,User> find = new Model.Finder<Long,User>(Long.class, User.class);
 
     /**
      * Retrieve all users.
@@ -90,8 +91,7 @@ public class User extends Model {
         return "User(" + email + ")";
     }
 
-    public static User show(String email) {
-      return find.byId(email);
+    public static User show(Long id) {
+      return find.byId(id);
     }
-
 }
