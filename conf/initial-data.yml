@@ -4,7 +4,7 @@
 users:
 
     - !!models.User
-        id:         1
+        id:         999901
         email:      guillaume@sample.com
         first_name: Guillaume
         last_name:  Bort
@@ -15,11 +15,11 @@ users:
         admin:      false
 
     - !!models.User
-        id:         2
+        id:         999902
         email:      admin@admin.com
         first_name: Siena
         last_name:  Santos
-        phone:      "09093339900"
+        phone:      "09093339910"
         dept:       Admin
         password:   admin
         company:    IA

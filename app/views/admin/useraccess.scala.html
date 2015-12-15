@@ -1,0 +1,88 @@
+@(users : List[User], id : Long)
+
+@import helper._
+
+@main("IA Innovations") {
+<div id="page-wrapper">
+
+  <div class="col-md-6">
+   <div class="container-fluid">
+  	<form action="/admin/user/@id/new" method="POST" class="form-horizontal" role="form">
+		<fieldset>
+		<!-- Form Name -->
+		<legend>User Access</legend>
+    @for(user <- users) {
+      @if(user.id == id){
+
+    		<!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="user_id">User ID</label>
+          <div class="col-md-8">
+          <input id="user_id" value="@id" name="user_id" type="text" placeholder="User ID" class="form-control input-md" required="">
+
+          </div>
+        </div>
+
+    		<div class="form-group">
+    		  <label class="col-md-4 control-label" for="email">Email</label>
+    		  <div class="col-md-8">
+    		  <input id="email" value="@user.email" name="email" type="text" placeholder="email" class="form-control input-md" required="">
+
+    		  </div>
+    		</div>
+
+    		<!-- Text input-->
+    		<div class="form-group">
+    		  <label class="col-md-4 control-label" for="first_name">First Name</label>
+    		  <div class="col-md-8">
+    		  <input id="first_name" value="@user.first_name" name="first_name" type="text" placeholder="First Name" class="form-control input-md" required="">
+
+    		  </div>
+    		</div>
+
+    		<!-- Text input-->
+    		<div class="form-group">
+    		  <label class="col-md-4 control-label" for="last_name">Last Name</label>
+    		  <div class="col-md-8">
+    		  <input id="last_name" value="@user.last_name" name="last_name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+
+    		  </div>
+    		</div>
+
+    		<!-- Multiple Checkboxes (inline) -->
+    		<div class="form-group">
+    		  <label class="col-md-4 control-label" for="checkboxes">Ticket Access Control</label>
+    		  <div class="col-md-8">
+    		    <label class="checkbox-inline" for="checkboxes-0">
+    		      <input type="checkbox" name="canadd" id="checkboxes-0" value="true">
+    		      Create
+    		    </label>
+    		    <label class="checkbox-inline" for="checkboxes-1">
+    		      <input type="checkbox" name="canread" id="checkboxes-1" value="true">
+    		      Read
+    		    </label>
+    		    <label class="checkbox-inline" for="checkboxes-2">
+    		      <input type="checkbox" name="canupdate" id="checkboxes-2" value="true">
+    		      Update
+    		    </label>
+    		    <label class="checkbox-inline" for="checkboxes-3">
+    		      <input type="checkbox" name="candelete" id="checkboxes-3" value="true">
+    		      Delete
+    		    </label>
+    		  </div>
+    		</div>
+        <div class="form-group">
+          <div class="col-md-8 col-md-offset-4">
+            <button type="submit" class="btn btn-default btn-block">Create</button>
+          </div>
+        </div>
+      }
+    }
+		</fieldset>
+	</form>
+  </div>
+  </div>
+
+	</div>
+
+}
