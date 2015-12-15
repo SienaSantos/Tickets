@@ -3,22 +3,13 @@
 
 # --- !Ups
 
-create table access (
-  id                        bigint not null,
-  can_add                   boolean,
-  can_read                  boolean,
-  can_update                boolean,
-  can_delete                boolean,
-  user_id                   bigint,
-  constraint pk_access primary key (id))
-;
-
 create table comment (
-  comment_id                bigint not null,
+  id                        bigint not null,
   comment_desc              varchar(255),
   status                    varchar(255),
-  id                        bigint,
-  constraint pk_comment primary key (comment_id))
+  ticket_id                 bigint,
+  user_id                   bigint,
+  constraint pk_comment primary key (id))
 ;
 
 create table ticket (
@@ -30,11 +21,13 @@ create table ticket (
   responsible               varchar(255),
   status                    varchar(255),
   date                      varchar(255),
+  user_id                   bigint,
   constraint pk_ticket primary key (id))
 ;
 
 create table user (
-  email                     varchar(255) not null,
+  id                        bigint not null,
+  email                     varchar(255),
   first_name                varchar(255),
   last_name                 varchar(255),
   phone                     varchar(255),
@@ -42,10 +35,18 @@ create table user (
   password                  varchar(255),
   company                   varchar(255),
   admin                     varchar(255),
-  constraint pk_user primary key (email))
+  constraint pk_user primary key (id))
 ;
 
-create sequence access_seq;
+create table user_access (
+  id                        bigint not null,
+  can_add                   boolean,
+  can_read                  boolean,
+  can_update                boolean,
+  can_delete                boolean,
+  user_id                   bigint,
+  constraint pk_user_access primary key (id))
+;
 
 create sequence comment_seq;
 
@@ -53,6 +54,16 @@ create sequence ticket_seq;
 
 create sequence user_seq;
 
+create sequence user_access_seq;
+
+alter table comment add constraint fk_comment_ticket_1 foreign key (ticket_id) references ticket (id) on delete restrict on update restrict;
+create index ix_comment_ticket_1 on comment (ticket_id);
+alter table comment add constraint fk_comment_user_2 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_comment_user_2 on comment (user_id);
+alter table ticket add constraint fk_ticket_user_3 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_ticket_user_3 on ticket (user_id);
+alter table user_access add constraint fk_user_access_user_4 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_user_access_user_4 on user_access (user_id);
 
 
 
@@ -60,21 +71,21 @@ create sequence user_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists access;
-
 drop table if exists comment;
 
 drop table if exists ticket;
 
 drop table if exists user;
 
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists user_access;
 
-drop sequence if exists access_seq;
+SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists comment_seq;
 
 drop sequence if exists ticket_seq;
 
 drop sequence if exists user_seq;
+
+drop sequence if exists user_access_seq;
 

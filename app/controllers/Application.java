@@ -83,7 +83,7 @@ public class Application extends Controller {
             Logger.debug("eto yung nireturn:  " + level);
             session("email", loginForm.get().email);
               if(level.equals("true")){
-                return ok(views.html.adminhomepage.render());
+                return ok(views.html.admin.adminhomepage.render());
               }
               else
               return redirect(

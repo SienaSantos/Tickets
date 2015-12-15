@@ -18,6 +18,7 @@ public class User extends Model {
     private static final long serialVersionUID = 1L;
 
 	@Id
+    public Long id;
     @Constraints.Required
     @Formats.NonEmpty
     public String email;
@@ -35,6 +36,15 @@ public class User extends Model {
     public String company;
 
     public String admin;
+
+    @OneToOne(mappedBy = "user")
+    public UserAccess access;
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+    public List<Ticket> ticket = new ArrayList<Ticket>();
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+    public List<Comment> comment = new ArrayList<Comment>();
 
     // -- Queries
 

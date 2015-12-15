@@ -39,8 +39,8 @@
                 @for(comment <- comments) {
                   @if(tickets.id == comment.id) {
                     <li>Username : <a href="routes.TicketsController.comment()">  @comment.comment_desc </a>
-                      Ticket Id : @comment.id
-                      Comment Id : @comment.comment_id
+                      comment Id : @comment.id
+                      ticket Id : <span> at comment.ticket_id dpat or  at comment.ticket.id </span>
                       </li>
                     }
                   }
