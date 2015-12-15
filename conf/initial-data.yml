@@ -4,6 +4,7 @@
 users:
 
     - !!models.User
+        id:         1
         email:      guillaume@sample.com
         first_name: Guillaume
         last_name:  Bort
@@ -14,6 +15,7 @@ users:
         admin:      false
 
     - !!models.User
+        id:         2
         email:      admin@admin.com
         first_name: Siena
         last_name:  Santos

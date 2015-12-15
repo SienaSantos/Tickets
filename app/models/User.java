@@ -79,7 +79,7 @@ public class User extends Model {
     }
 
     public static String isAdmin(String email , String password){
-      User user = User.show(email);
+      User user = User.findByEmail(email);
       String str = user.admin;
       return str;
     }
