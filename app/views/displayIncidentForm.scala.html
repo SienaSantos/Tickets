@@ -1,0 +1,30 @@
+@(incidents: Incident, displayIncidentForm : Form[Incident])
+
+@import helper._
+
+@main("Incident Content") {
+
+      <h1> Incident Content</h1>
+
+        <!--  @incidents.id<br>
+          @incidents.incidentdesc<br> -->
+
+
+        <form action="/incidents/@incidents.id/update" method="POST" >
+          <dl class=" " id="Id_field">
+              <dt><label for="Id">Id</label></dt>
+              <dd>
+              <input type="text" id="Id" name="Id" value="@incidents.id" readonly>
+              </dd>
+          </dl>
+
+          <dl class=" " id="desc_field">
+              <dt><label for="desc">title</label></dt>
+              <dd>
+              <input type="text" id="desc" name="incidentdesc" value="@incidents.incidentdesc" >
+              </dd><dd class="info">Required</dd>
+          </dl>
+
+<input type="submit" value="Update">
+</form>
+}
